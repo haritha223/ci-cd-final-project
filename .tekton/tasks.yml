@@ -3,13 +3,24 @@ kind: Task
 metadata:
   name: cleanup-task
 spec:
+  workspaces:
+    - name: source
   steps:
     - name: cleanup
       image: alpine:3.14
+      env:
+        - name: WORKSPACE_SOURCE_PATH
+          value: $(workspaces.source.path)
       script: |
-        echo "Cleaning up temporary files and resources..."
-        rm -rf /tmp/*
-        echo "Cleanup completed successfully"
+        set -eu
+        : "${WORKSPACE_SOURCE_PATH:?WORKSPACE_SOURCE_PATH is required}"
+        if [ "$WORKSPACE_SOURCE_PATH" = "/" ]; then
+          echo "Refusing to clean the filesystem root" >&2
+          exit 1
+        fi
+        echo "Cleaning up workspace: $WORKSPACE_SOURCE_PATH"
+        find "$WORKSPACE_SOURCE_PATH" -mindepth 1 -maxdepth 1 -exec rm -rf -- {} +
+        echo "Workspace cleanup completed successfully"
 
 ---
 apiVersion: tekton.dev/v1beta1
