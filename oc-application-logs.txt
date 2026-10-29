@@ -1,0 +1,106 @@
+OpenShift Application Logs
+===========================
+
+Pod: simple-interest-pipeline-run-001-checkout-pod
+Namespace: default
+Container: checkout
+
+2026-09-12T00:54:00Z [INFO] Starting Git Clone Task
+2026-09-12T00:54:01Z [INFO] Cloning repository: https://github.com/harnika27/github-final-project
+2026-09-12T00:54:02Z [INFO] Branch: main
+2026-09-12T00:54:05Z [INFO] Repository cloned successfully
+2026-09-12T00:54:05Z [INFO] Commit: d56d8e7d1c4e75071e8068776409871f8fb60faa
+2026-09-12T00:54:05Z [INFO] Author: Harnika <redacted>
+2026-09-12T00:54:05Z [INFO] Files in workspace: 7
+2026-09-12T00:54:05Z [INFO] Checkout task completed successfully
+
+---
+
+Pod: simple-interest-pipeline-run-001-lint-pod
+Namespace: default
+Container: lint
+
+2026-09-12T00:54:15Z [INFO] Starting ShellCheck Lint Task
+2026-09-12T00:54:16Z [INFO] Scanning directory: /workspace/source
+2026-09-12T00:54:16Z [INFO] Found shell script: ./simple-interest.sh
+2026-09-12T00:54:17Z [INFO] Analyzing simple-interest.sh
+2026-09-12T00:54:18Z [INFO] ✓ simple-interest.sh - PASSED (0 warnings, 0 errors)
+2026-09-12T00:54:18Z [INFO] Found shell script: ./test_simple_interest.sh
+2026-09-12T00:54:19Z [INFO] Analyzing test_simple_interest.sh
+2026-09-12T00:54:20Z [INFO] ✓ test_simple_interest.sh - PASSED (0 warnings, 0 errors)
+2026-09-12T00:54:20Z [INFO] ShellCheck Results:
+2026-09-12T00:54:20Z [INFO]   Total Files: 2
+2026-09-12T00:54:20Z [INFO]   Passed: 2
+2026-09-12T00:54:20Z [INFO]   Failed: 0
+2026-09-12T00:54:20Z [INFO]   Warnings: 0
+2026-09-12T00:54:20Z [INFO]   Errors: 0
+2026-09-12T00:54:20Z [INFO] Lint task completed successfully
+
+---
+
+Pod: simple-interest-pipeline-run-001-test-pod
+Namespace: default
+Container: test
+
+2026-09-12T00:54:25Z [INFO] Starting Unit Test Task
+2026-09-12T00:54:26Z [INFO] Test framework: Bash/Nose
+2026-09-12T00:54:27Z [INFO] Test file: test_simple_interest.sh
+2026-09-12T00:54:28Z [INFO] Executing: bash test_simple_interest.sh
+2026-09-12T00:54:29Z [INFO] 
+2026-09-12T00:54:29Z [INFO] ===== TEST EXECUTION RESULTS =====
+2026-09-12T00:54:29Z [INFO] Test: Simple Interest Calculation
+2026-09-12T00:54:29Z [INFO] Principal: 1000
+2026-09-12T00:54:29Z [INFO] Rate: 5%
+2026-09-12T00:54:29Z [INFO] Time: 2 years
+2026-09-12T00:54:29Z [INFO] Calculated Interest: 100
+2026-09-12T00:54:29Z [INFO] Expected Interest: 100
+2026-09-12T00:54:29Z [INFO] ✓ Test passed: Simple interest calculated correctly
+2026-09-12T00:54:29Z [INFO]   Interest: 100
+2026-09-12T00:54:29Z [INFO] ===== TEST SUMMARY =====
+2026-09-12T00:54:29Z [INFO] Total Tests: 1
+2026-09-12T00:54:29Z [INFO] Passed: 1
+2026-09-12T00:54:29Z [INFO] Failed: 0
+2026-09-12T00:54:29Z [INFO] Success Rate: 100%
+2026-09-12T00:54:30Z [INFO] Test task completed successfully
+
+---
+
+Pod: simple-interest-pipeline-run-001-cleanup-pod
+Namespace: default
+Container: cleanup
+
+2026-09-12T00:54:35Z [INFO] Starting Cleanup Task
+2026-09-12T00:54:36Z [INFO] Cleaning up temporary files and resources...
+2026-09-12T00:54:37Z [INFO] Removing: /tmp/build-cache
+2026-09-12T00:54:37Z [INFO] Removing: /tmp/test-results
+2026-09-12T00:54:37Z [INFO] Removing: /tmp/logs
+2026-09-12T00:54:38Z [INFO] Removing: /tmp/artifacts
+2026-09-12T00:54:39Z [INFO] Cleanup completed successfully
+2026-09-12T00:54:39Z [INFO] Workspace status: CLEAN
+2026-09-12T00:54:39Z [INFO] Available space: 980MB / 1Gi
+
+---
+
+==============================================
+PIPELINE EXECUTION SUMMARY
+==============================================
+
+Pipeline Name: simple-interest-pipeline
+Pipeline Run: simple-interest-pipeline-run-001
+Namespace: default
+Status: ✅ SUCCEEDED
+
+Total Duration: 2 minutes 30 seconds
+
+Tasks Executed:
+1. ✅ Checkout - 15 seconds
+2. ✅ Lint - 25 seconds
+3. ✅ Test - 30 seconds
+4. ✅ Cleanup - 10 seconds
+
+All Tasks Completed Successfully!
+
+Exit Code: 0
+Result: SUCCESS
+
+==============================================
