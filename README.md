@@ -1,6 +1,8 @@
-# GitHub Final Project - Simple Interest Calculator
+# CI/CD Final Project
 
-**Project Name:** Simple Interest Calculator
+**Project Name:** CI/CD Final Project
+
+The project demonstrates CI/CD automation for a simple interest calculator implemented using a Bash script.
 
 This project is a CI/CD Final Project - a Simple Interest Calculator implemented using a Bash script.
 
