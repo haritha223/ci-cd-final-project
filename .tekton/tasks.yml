@@ -21,7 +21,9 @@ spec:
     - name: run-tests
       image: python:3.9
       script: |
+        set -eu
         echo "Running unit tests with nose..."
         pip install nose
+        nosetests -v
         bash test_simple_interest.sh
         echo "Tests completed successfully"

@@ -1,4 +1,8 @@
-# CI/CD Final Project - Simple Interest Calculator
+# Simple Interest Calculator
+
+## Project Name
+
+Simple Interest Calculator
 
 This project is a CI/CD Final Project - a Simple Interest Calculator implemented using a Bash script.
 
